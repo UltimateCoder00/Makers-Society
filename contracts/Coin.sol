@@ -28,7 +28,7 @@ contract Coin {
       return balances[addr];
     }
 
-    function send(address receiver, uint amount) {
+    function sendCoin(address receiver, uint amount) {
         if (balances[msg.sender] < amount) return;
         balances[msg.sender] -= amount;
         balances[receiver] += amount;
