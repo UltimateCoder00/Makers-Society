@@ -1,5 +1,4 @@
 pragma solidity ^0.4.0;
-
 contract Coin {
     // The keyword "public" makes those variables
     // readable from outside.
@@ -16,9 +15,17 @@ contract Coin {
         minter = msg.sender;
     }
 
+    function getMinter() returns (address) {
+      return msg.sender;
+    }
+
     function mint(address receiver, uint amount) {
         if (msg.sender != minter) return;
         balances[receiver] += amount;
+    }
+
+    function getBalance(address addr) returns(uint) {
+      return balances[addr];
     }
 
     function send(address receiver, uint amount) {
