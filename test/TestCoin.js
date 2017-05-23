@@ -18,14 +18,13 @@ contract('Coin', function(accounts) {
 
     return Coin.deployed().then(function(instance) {
       coin = instance;
-      coin.mint.call(account_two, amount);
-      return account_two;
-    }).then (function(account_two) {
+      return coin.mint(account_two, amount, {from: account_one});
+    }).then (function() {
       return coin.getBalance.call(account_two);
     }).then (function(balance) {
       account_two_ending_balance = balance.toNumber();
 
-      assert.equal(account_two_ending_balance, amount, "Amount is minted to account 2")
+      assert.equal(account_two_ending_balance, amount, "Amount is minted to account 2");
 
     });
 
