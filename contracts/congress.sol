@@ -52,6 +52,9 @@ contract Congress is owned, tokenRecipient {
     event MembershipChanged(address member, bool isMember);
     event ChangeOfRules(uint minimumQuorum, uint debatingPeriodInMinutes, int majorityMargin);
 
+    // Use for debugging
+    /*event PrintInfo (uint info);*/
+
     struct Proposal {
         address recipient;
         uint amount;
@@ -122,6 +125,8 @@ contract Congress is owned, tokenRecipient {
         }
         delete members[members.length-1];
         members.length--;
+
+      MembershipChanged(targetMember, false);
     }
 
     /*change rules*/
