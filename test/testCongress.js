@@ -17,4 +17,17 @@ contract("Congress", function(accounts) {
       });
     });
   });
-});
+  it("Should add a member", function() {
+    var congress;
+    var account_one = accounts[0];
+    var account_two = accounts[1];
+    var event;
+    return Congress.deployed().then(function(instance) {
+      congress = instance;
+      return congress.addMember(account_two, "Steph")
+    }).then(function(result){
+        event = result.logs[0].event;
+        assert.equal(event, "MembershipChanged", "Should return membership event")
+      });
+    });
+  });
