@@ -6,7 +6,7 @@ contract("MakersToken", function(accounts) {
 
     var account_one_ending_balance;
 
-    return MakersToken.deployed(100, "MakersToken", 2, "MKT").then(function(instance) {
+    return MakersToken.deployed(100, "MakersToken", 2, "MKT",0).then(function(instance) {
       makersToken = instance;
       return makersToken.transfer( accounts[1], 10, {from: accounts[0]} );
     }).then(function() {
