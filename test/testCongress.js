@@ -3,7 +3,7 @@ var Congress = artifacts.require("./Congress.sol");
 contract("Congress", function(accounts) {
   it("should be able to create a proposal", function(){
     var congress;
-    var account_one = accounts[0]
+    var account_one = accounts[0];
     var proposal;
     var check_out;
     return Congress.deployed().then(function(instance) {
@@ -14,7 +14,7 @@ contract("Congress", function(accounts) {
       }).then(function(checkout) {
         check_out = checkout;
         assert.equal(check_out, true, "Proposal should check out");
-      })
+      });
     });
   });
 });
