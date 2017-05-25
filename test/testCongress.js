@@ -58,7 +58,7 @@ contract("Congress", function(accounts) {
 
       return Congress.deployed().then(function(instance) {
         congress = instance;
-        return congress.changeVotingRules(1, 1, 1);
+        return congress.changeVotingRules(1, 20, 0);
       }).then(function(result){
           loggedEvent = result.logs[0].event;
 
@@ -67,9 +67,9 @@ contract("Congress", function(accounts) {
           majorityMargin = result.logs[0].args.majorityMargin.valueOf();
 
           assert.equal(loggedEvent, "ChangeOfRules", "Should return change of rules event")
-          assert.equal(minimumQuorum, 1, "Should change the minimum quorum to 10")
-          assert.equal(debatingPeriodInMinutes, 1, "Should change the debating period to 20")
-          assert.equal(majorityMargin, 1, "Should change the majority margin to 30")
+          assert.equal(minimumQuorum, 1, "Should change the minimum quorum to 1")
+          assert.equal(debatingPeriodInMinutes, 20, "Should change the debating period to 20")
+          assert.equal(majorityMargin, 0, "Should change the majority margin to 0")
         });
       });
 
@@ -96,8 +96,25 @@ contract("Congress", function(accounts) {
             assert.equal(position, true, "Should indicate position of voter is true")
             assert.equal(voter, account_one, "Should return voter account")
             assert.equal(justification, "It's awesome", "Should indicate proposal is awesome")
-
           });
         });
+
+        it("Should execute a proposal", function() {
+          var congress;
+          var loggedEvent;
+          var proposalPassed;
+
+          return Congress.deployed().then(function(instance) {
+            congress = instance;
+            //This refers to the proposal and bytecode created in the first test
+            return congress.executeProposal(0, 1234);
+          }).then(function(result){
+              loggedEvent = result.logs[0].event;
+              proposalPassed = result.logs[0].args.active.valueOf();
+
+              assert.equal(loggedEvent, "ProposalTallied", "Should indicate the proposal has been executed");
+              assert.equal(proposalPassed, true, "Should indicate the proposal was passed");
+            });
+          });
 
   });

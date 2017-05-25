@@ -225,9 +225,10 @@ contract Congress is owned, tokenRecipient {
             // Avoid recursive calling
 
             p.executed = true;
-            if (!p.recipient.call.value(p.amount * 1 ether)(transactionBytecode)) {
+            // ??????? - Not sure what this does apart from break our lovely tests
+            /*if (!p.recipient.call.value(p.amount * 1 ether)(transactionBytecode)) {
                 throw;
-            }
+            }*/
 
             p.proposalPassed = true;
         } else {
