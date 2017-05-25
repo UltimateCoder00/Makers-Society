@@ -17,51 +17,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      storageValue: 0
     };
   }
-
-  // componentWillMount() {
-  //   /*
-  //    * SMART CONTRACT EXAMPLE
-  //    *
-  //    * Normally these functions would be called in the context of a
-  //    * state management library, but for convenience I've placed them here.
-  //    */
-  //
-  //   // So we can update state later.
-  //   var self = this;
-  //
-  //   // Get the RPC provider and setup our MakersToken contract.
-  //   const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-  //   const contract = require('truffle-contract')
-  //   const makersToken = contract(MakersTokenContract)
-  //   makersToken.setProvider(provider)
-  //
-  //   // Get Web3 so we can get our accounts.
-  //   const web3RPC = new Web3(provider)
-  //
-  //   // Declaring this for later so we can chain functions on MakersToken.
-  //   var makersTokenInstance
-  //
-  //   // Get accounts.
-  //   web3RPC.eth.getAccounts(function(error, accounts) {
-  //     console.log(accounts)
-  //
-  //     makersToken.deployed().then(function(instance) {
-  //       makersTokenInstance = instance
-  //
-  //       // Stores a value of 5.
-  //     //   return makersTokenInstance.get(5, {from: accounts[0]})
-  //     // }).then(function(result) {
-  //       // Get the value from the contract to prove it worked.
-  //       return makersTokenInstance.getBalance.call()
-  //     }).then(function(result) {
-  //       // Update state with the result.
-  //       return self.setState({ storageValue: result.c[0] })
-  //     })
-  //   })
-  // }
 
   render() {
     return (
@@ -72,10 +29,8 @@ class App extends Component {
           <div className="pure-g">
             <div className="pure-u-1-1">
               <PointsDisplay />
-              <h2>Smart Contract Example</h2>
-              <p>The below will show a stored value of 5 by default if your contracts compiled and migrated successfully.</p>
-              <p>Try changing the value stored on <strong>line 50</strong> of App.js.</p>
-              <p>The stored value is: {this.state.storageValue}</p>
+              <h2>Show Your Appreciation and send some MKP to your friends!</h2>
+
             </div>
           </div>
         </main>

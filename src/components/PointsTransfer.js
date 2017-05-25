@@ -8,3 +8,6 @@ import '../css/pure-min.css'
 import '../App.css'
 
 export default class PointsTransfer extends React.Component {
+
+
+}

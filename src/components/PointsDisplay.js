@@ -47,7 +47,7 @@ export default class PointsDisplay extends React.Component {
     this.loadPoints();
     return (
       <div>
-        <p>You have {this.state.accountPoints} MakerPoints!</p>
+        <h1>You have {this.state.accountPoints} MakerPoints!</h1>
       </div>
     );
   }
