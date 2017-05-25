@@ -39,5 +39,24 @@ contract("MakersToken", function(accounts) {
       assert.equal(account_three_ending_balance, amount, "Correct balance after transfer is complete");
     });
   });
+});
+contract("MakersToken(State Reset)", function(accounts) {
+  it ("should mint coins into an account", function() {
+    var makersToken;
+    var contract_owner = accounts[0];
+    var account_two = accounts[1];
+    var amount = 10;
+    var account_two_ending_balance;
+
+    return MakersToken.deployed(100, "MakersToken", 2, "MKT",0).then(function(instance) {
+      makersToken = instance;
+      return makersToken.mintToken(account_two, amount, {from: contract_owner} );
+    }).then(function() {
+      return makersToken.getBalance.call( {from: account_two });
+    }).then(function(balance) {
+      account_two_ending_balance = balance.toNumber();
+      assert.equal(account_two_ending_balance, amount, "Correct balance after transfer is complete");
+    });
+  });
 
 });
