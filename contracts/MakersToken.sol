@@ -1,23 +1,6 @@
 pragma solidity ^0.4.8;
 
-contract owned {
-  address public owner;
-
-  function owned() {
-    owner = msg.sender;
-  }
-
-  modifier onlyOwner {
-    if (msg.sender != owner) throw;
-    _;
-  }
-
-  function transferOwnership(address newOwner) onlyOwner {
-    owner = newOwner;
-  }
-
-}
-
+import "./Owned.sol";
 
 contract MakersToken is owned {
 
