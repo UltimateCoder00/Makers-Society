@@ -19,6 +19,7 @@ export default class Input extends React.Component {
      label={this.props.label}
     />
      <input
+      onChange={this.props.onChange || null}
       id={this.props.htmlFor}
       max={this.props.max || null}
       min={this.props.min || null}
@@ -27,6 +28,7 @@ export default class Input extends React.Component {
       required={this.props.required || null}
       step={this.props.step || null}
       type={this.props.type || 'text'}
+
      />
    </fieldset>
   );

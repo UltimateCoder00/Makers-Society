@@ -11,44 +11,72 @@ import '../App.css'
 
 export default class PointsTransferForm extends React.Component {
 
+  constructor(props) {
+
+    super(props);
+    this.state = {
+      value: '',
+      accountNumber: 'null',
+      transferAmount: 'null'
+    };
+    this.handleAccountChange = this.handleAccountChange.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleAccountChange(event) {
+    console.log(this.state.accountNumber);
+
+    this.setState({accountNumber: event.target.value});
+  }
+
+  handleAmountChange(event) {
+    console.log(this.state.transferAmount);
+
+    this.setState({transferAmount: event.target.value});
+  }
+
   handleSubmit(event) {
 
-    // const accountNumber = this.refs.accountNumber.value;
-    // const transferAmount = this.refs.transferAmount.value;
-    // console.log(accountNumber)
-    // var self = this;
-    //
-    // const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-    // const contract = require('truffle-contract')
-    // const makersToken = contract(MakersTokenContract)
-    // makersToken.setProvider(provider)
-    //
-    // const web3RPC = new Web3(provider)
-    //
-    // var makersTokenInstance
-    //
-    //   makersToken.deployed().then(function(instance) {
-    //     makersTokenInstance = instance;
-    //     console.log(self.refs.transferAmount.value);
-    //     return makersTokenInstance.transfer(accountNumber,transferAmount);
-    //   }).then(function() {
-        console.log(this.refs.accountNumber.value)
-        // return self.setState({ accountPoints: "Transaction successfull" })
-      // })
-    // })
+    var self = this;
+
+
+
+    const provider = new Web3.providers.HttpProvider('http://localhost:8545')
+
+    const contract = require('truffle-contract')
+    const makersToken = contract(MakersTokenContract)
+    makersToken.setProvider(provider)
+
+    const web3RPC = new Web3(provider)
+
+    var makersTokenInstance
+
+    web3RPC.eth.getAccounts(function(error, accounts) {
+      console.log(accounts);
+
+      makersToken.deployed().then(function(instance) {
+        makersTokenInstance = instance;
+        return makersTokenInstance.transfer(self.state.accountNumber,self.state.transferAmount);
+      }).then(function() {
+        return console.log('yay');
+      });
+    });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form onSubmit={this.handleSubmit}>
         <Input
          hasLabel='true'
-         placeholder='hiya'
-         ref="accountNumber"
+         name="accountNumber"
          htmlFor='textInput'
          label='Enter Address '
          required='true'
          type='text'
+
+         value={this.state.value}
+         onChange={this.handleAccountChange}
         />
 
         <Input
@@ -59,6 +87,9 @@ export default class PointsTransferForm extends React.Component {
          label='Amount '
          required='true'
          type='number'
+         name='amount'
+         value={this.state.value}
+         onChange={this.handleAmountChange}
         />
 
         <Button
