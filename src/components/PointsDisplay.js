@@ -38,6 +38,7 @@ export default class PointsDisplay extends React.Component {
         makersTokenInstance = instance;
         return makersTokenInstance.getBalance.call()
       }).then(function(result) {
+        console.log(result.c)
         return self.setState({ accountPoints: result.c[0] })
       })
     // })

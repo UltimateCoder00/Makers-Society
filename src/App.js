@@ -3,6 +3,7 @@ import MakersTokenContract from '../build/contracts/MakersToken.json'
 import Web3 from 'web3'
 import Header from './components/Header';
 import PointsDisplay from './components/PointsDisplay';
+import PointsTransferForm from './components/PointsTransferForm';
 
 
 import './css/oswald.css'
@@ -13,6 +14,7 @@ import './App.css'
 
 
 class App extends Component {
+
   constructor(props) {
     super(props);
 
@@ -20,15 +22,17 @@ class App extends Component {
     };
   }
 
+  // const formContainer = document.querySelector('.react-form-container')
+
   render() {
     return (
       <div className="App">
       <Header />
-
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">
               <PointsDisplay />
+              <PointsTransferForm />
               <h2>Show Your Appreciation and send some MKP to your friends!</h2>
 
             </div>
