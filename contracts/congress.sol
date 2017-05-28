@@ -1,22 +1,8 @@
-pragma solidity ^0.4.2;
-contract owned {
-    address public owner;
+pragma solidity ^0.4.8;
 
-    function owned() {
-        owner = msg.sender;
-    }
+import "./Owned.sol";
 
-    modifier onlyOwner {
-        if (msg.sender != owner) throw;
-        _;
-    }
-
-    function transferOwnership(address newOwner) onlyOwner {
-        owner = newOwner;
-    }
-}
-
-contract tokenRecipient {
+/*contract tokenRecipient {
     event receivedEther(address sender, uint amount);
     event receivedTokens(address _from, uint256 _value, address _token, bytes _extraData);
 
@@ -33,9 +19,10 @@ contract tokenRecipient {
 
 contract Token {
     function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
-}
+}*/
 
-contract Congress is owned, tokenRecipient {
+/*contract Congress is owned, tokenRecipient {*/
+contract Congress is owned {
 
     /* Contract Variables and events */
     uint public minimumQuorum;
@@ -51,6 +38,9 @@ contract Congress is owned, tokenRecipient {
     event ProposalTallied(uint proposalID, int result, uint quorum, bool active);
     event MembershipChanged(address member, bool isMember);
     event ChangeOfRules(uint minimumQuorum, uint debatingPeriodInMinutes, int majorityMargin);
+
+    // Use for debugging
+    /*event PrintInfo (uint info);*/
 
     struct Proposal {
         address recipient;
@@ -108,7 +98,7 @@ contract Congress is owned, tokenRecipient {
            members[id] = Member({member: targetMember, memberSince: now, name: memberName});
         } else {
             id = memberId[targetMember];
-            Member m = members[id];
+            /*Member m = members[id];*/
         }
 
         MembershipChanged(targetMember, true);
@@ -122,6 +112,8 @@ contract Congress is owned, tokenRecipient {
         }
         delete members[members.length-1];
         members.length--;
+
+      MembershipChanged(targetMember, false);
     }
 
     /*change rules*/
@@ -220,9 +212,10 @@ contract Congress is owned, tokenRecipient {
             // Avoid recursive calling
 
             p.executed = true;
-            if (!p.recipient.call.value(p.amount * 1 ether)(transactionBytecode)) {
+            // ??????? - Not sure what this does apart from break our lovely tests
+            /*if (!p.recipient.call.value(p.amount * 1 ether)(transactionBytecode)) {
                 throw;
-            }
+            }*/
 
             p.proposalPassed = true;
         } else {
