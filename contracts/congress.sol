@@ -1,6 +1,6 @@
 pragma solidity ^0.4.8;
 
-import "./Owned.sol";
+import "./Society.sol";
 
 /*contract tokenRecipient {
     event receivedEther(address sender, uint amount);
@@ -22,7 +22,7 @@ contract Token {
 }*/
 
 /*contract Congress is owned, tokenRecipient {*/
-contract Congress is owned {
+contract Congress is Society {
 
     /* Contract Variables and events */
     uint public minimumQuorum;
@@ -30,15 +30,11 @@ contract Congress is owned {
     int public majorityMargin;
     Proposal[] public proposals;
     uint public numProposals;
-    mapping (address => uint) public memberId;
-    Member[] public members;
 
     event ProposalAdded(uint proposalID, address recipient, uint amount, string description);
     event Voted(uint proposalID, bool position, address voter, string justification);
     event ProposalTallied(uint proposalID, int result, uint quorum, bool active);
-    event MembershipChanged(address member, bool isMember);
     event ChangeOfRules(uint minimumQuorum, uint debatingPeriodInMinutes, int majorityMargin);
-
     // Use for debugging
     /*event PrintInfo (uint info);*/
 
@@ -56,23 +52,10 @@ contract Congress is owned {
         mapping (address => bool) voted;
     }
 
-    struct Member {
-        address member;
-        string name;
-        uint memberSince;
-    }
-
     struct Vote {
         bool inSupport;
         address voter;
         string justification;
-    }
-
-    /* modifier that allows only shareholders to vote and create new proposals */
-    modifier onlyMembers {
-        if (memberId[msg.sender] == 0)
-        throw;
-        _;
     }
 
     /* First time setup */
@@ -87,33 +70,6 @@ contract Congress is owned {
         addMember(0, '');
         // and let's add the founder, to save a step later
         addMember(owner, 'founder');
-    }
-
-    /*make member*/
-    function addMember(address targetMember, string memberName) onlyOwner {
-        uint id;
-        if (memberId[targetMember] == 0) {
-           memberId[targetMember] = members.length;
-           id = members.length++;
-           members[id] = Member({member: targetMember, memberSince: now, name: memberName});
-        } else {
-            id = memberId[targetMember];
-            /*Member m = members[id];*/
-        }
-
-        MembershipChanged(targetMember, true);
-    }
-
-    function removeMember(address targetMember) onlyOwner {
-        if (memberId[targetMember] == 0) throw;
-
-        for (uint i = memberId[targetMember]; i<members.length-1; i++){
-            members[i] = members[i+1];
-        }
-        delete members[members.length-1];
-        members.length--;
-
-      MembershipChanged(targetMember, false);
     }
 
     /*change rules*/
