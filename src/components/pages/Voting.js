@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import MakersTokenContract from '../../../build/contracts/MakersToken.json'
 import Web3 from 'web3'
 import VotingProposalForm from '../VotingProposalForm';
+import VoteList from '../VoteList';
+
 
 import '../../css/oswald.css'
 import '../../css/open-sans.css'
@@ -16,6 +18,7 @@ export default class Voting extends React.Component {
             <div>
             <h1>Voting</h1>
             <VotingProposalForm />
+            <VoteList />
             </div>
           </div>
         </div>
