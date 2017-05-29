@@ -44,7 +44,6 @@ export default class VoteList extends React.Component {
     for (var i = 0; i < self.state.NumberOfProposals; i++) {
       self.state.ProposalArray[i] = i + 1 ;
       this.getProposalName(i);
-      debugger;
     }
   }
 
@@ -114,14 +113,46 @@ export default class VoteList extends React.Component {
   //     });
   //   }
   // )};
+  PrintProposal(i) {
+    var self = this;
+      return (
+        <div>
+          <h1>Proposal ID: {self.state.ProposalArray[i]}</h1>
+          <h1>Proposal Description: {self.state.ProposalArrayNames[i]}</h1>
+        </div>
+      )
+  }
+
+  voteIdList() {
+    const listItem = this.state.ProposalArray
+    const listItems = listItem.map((proposal) =>
+      <li>{proposal}</li>
+    )
+    return (
+      <ul>{listItems}</ul>
+    )
+  }
+  voteNameList() {
+    const listItem = this.state.ProposalArrayNames
+    const listItems = listItem.map((proposal) =>
+      <li>{proposal}</li>
+    )
+    return (
+      <ul>{listItems}</ul>
+    )
+  }
+
   PrintProposalArray() {
     var self = this;
-    for (var i = 1; i < self.state.NumberOfProposals + 1; i++) {
-      self.state.ProposalArray[i - 1] = i ;
-      this.getProposalName(i);
+    for (var i = 0; i < self.state.NumberOfProposals; i++) {
+        self.PrintProposal(i)
     }
-
   }
+
+
+
+
+
 
 
   render() {
@@ -129,7 +160,16 @@ export default class VoteList extends React.Component {
     this.PopulateVoteArray();
     return (
       <div>
-
+        <table>
+          <td>
+            Proposal ID
+            {this.voteIdList()}
+          </td>
+          <td>
+            Proposal Name
+            {this.voteNameList()}
+          </td>
+        </table>
         <h1>You {this.state.ProposalArray} MakerPoints!</h1>
         <h1>You {this.state.ProposalArrayNames} MakerPoints!</h1>
       </div>

@@ -15,20 +15,12 @@ export default class VotingProposalForm extends React.Component {
 
     super(props);
     this.state = {
-      beneficiary: 'null',
-      etherAmount: 0,
       jobDescription: 'null'
     };
-    this.handleBeneficiaryChange = this.handleBeneficiaryChange.bind(this);
     this.handleJobDescriptionChange = this.handleJobDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleBeneficiaryChange(event) {
-    console.log(this.state.beneficiary);
-
-    this.setState({beneficiary: event.target.value});
-  }
 
   handleJobDescriptionChange(event) {
     console.log(this.state.jobDescription);
@@ -55,7 +47,7 @@ export default class VotingProposalForm extends React.Component {
 
       congress.deployed().then(function(instance) {
         congressInstance = instance;
-
+        debugger;
         return congressInstance.newProposal(self.state.jobDescription);
       }).then(function() {
         return console.log('done');
