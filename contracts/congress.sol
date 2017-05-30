@@ -1,21 +1,7 @@
 pragma solidity ^0.4.8;
+
 import "./Society.sol";
-/*contract tokenRecipient {
-    event receivedEther(address sender, uint amount);
-    event receivedTokens(address _from, uint256 _value, address _token, bytes _extraData);
-    function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData){
-        Token t = Token(_token);
-        if (!t.transferFrom(_from, this, _value)) throw;
-        receivedTokens(_from, _value, _token, _extraData);
-    }
-    function () payable {
-        receivedEther(msg.sender, msg.value);
-    }
-}
-contract Token {
-    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
-}*/
-/*contract Congress is owned, tokenRecipient {*/
+
 contract Congress is Society {
     /* Contract Variables and events */
     uint public minimumQuorum;
@@ -73,10 +59,7 @@ contract Congress is Society {
     function newProposal(string JobDescription)  onlyMembers  returns (uint proposalID) {
         proposalID = proposals.length++;
         Proposal p = proposals[proposalID];
-        /*p.recipient = beneficiary;
-        p.amount = etherAmount;*/
         p.description = JobDescription;
-        /*p.proposalHash = sha3(beneficiary, etherAmount, transactionBytecode);*/
         p.votingDeadline = now + debatingPeriodInMinutes * 1 minutes;
         p.executed = false;
         p.proposalPassed = false;
