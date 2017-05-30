@@ -16,8 +16,9 @@ export default class Voting extends React.Component {
         <div className="pure-g">
           <div className="pure-u-1-1">
             <div>
-            <h1>Voting</h1>
+
             <VotingProposalForm />
+            <h1>Voting</h1>
             <VoteList />
             </div>
           </div>
