@@ -8,12 +8,11 @@ contract("Congress", function(accounts) {
     var check_out;
     return Congress.deployed().then(function(instance) {
       congress = instance;
-      return congress.newProposal(account_one, 2, "dummyproposal", 1234, {from: account_one})
+      return congress.newProposal("dummyproposal", {from: account_one})
       .then(function(){
-        return congress.checkProposalCode.call(0, account_one, 2, 1234);
+        return congress.getProposal.call(0);
       }).then(function(checkout) {
-        check_out = checkout;
-        assert.equal(check_out, true, "Proposal should check out");
+        assert.equal(checkout, "dummyproposal", "Proposal should check out");
       });
     });
   });
@@ -92,7 +91,7 @@ contract("Congress", function(accounts) {
     var justification;
     return Congress.deployed().then(function(instance) {
       congress = instance;
-      return congress.newProposal(account_one, 2, "dummyproposal", 1234, {from: account_one})
+      return congress.newProposal("dummyproposal", {from: account_one})
     }).then(function(){
       return congress.vote(0, true, "It's awesome");
     }).then(function(result){
@@ -119,13 +118,13 @@ contract("Congress", function(accounts) {
 
     return Congress.deployed().then(function(instance) {
       congress = instance;
-      return congress.newProposal(account_one, 2, "dummyproposal", 1234, {from: account_one})
+      return congress.newProposal("dummyproposal", {from: account_one})
     }).then(function(){
       return congress.changeVotingRules(1, 20, 0);
     }).then(function(){
       return congress.vote(0, true, "It's awesome");
     }).then(function(){
-      return congress.executeProposal(0, 1234);
+      return congress.executeProposal(0);
     }).then(function(result){
       loggedEvent = result.logs[0].event;
       proposalPassed = result.logs[0].args.active.valueOf();
