@@ -12,13 +12,14 @@ export default class Input extends React.Component {
 
  render() {
   return (
-   <fieldset>
+   <fieldset className="input-row">
     <Label
      hasLabel={this.props.hasLabel}
      htmlFor={this.props.htmlFor}
      label={this.props.label}
     />
-     <input
+    <br/>
+     <input className='input-field'
       onChange={this.props.onChange || null}
       id={this.props.htmlFor}
       max={this.props.max || null}

@@ -14,7 +14,7 @@ export default class Points extends React.Component {
     return (
         <div className="pure-g">
           <div className="pure-u-1-1">
-            <div>
+            <div className="main-block">
             <PointsDisplay />
             <PointsTransferForm />
             <h2>Show Your Appreciation and send some MKP to your friends!</h2>

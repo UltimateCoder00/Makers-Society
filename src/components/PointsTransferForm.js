@@ -66,12 +66,13 @@ export default class PointsTransferForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='input-form' onSubmit={this.handleSubmit}>
         <Input
          hasLabel='true'
          name="accountNumber"
+         placeholder='Recipient address'
          htmlFor='textInput'
-         label='Enter Address '
+         label='Address '
          required='true'
          type='text'
 
@@ -81,8 +82,8 @@ export default class PointsTransferForm extends React.Component {
 
         <Input
          hasLabel='true'
-         placeholder='10'
-         ref="transferAmount"
+         placeholder='Enter amount'
+         ref='transferAmount'
          htmlFor='textInput'
          label='Amount '
          required='true'

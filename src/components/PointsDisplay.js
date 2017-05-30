@@ -13,7 +13,6 @@ export default class PointsDisplay extends React.Component {
     super();
     this.state = {
       accountPoints: 'loading points...',
-      transactionHistory: 'loading points...'
     };
   }
 
@@ -36,20 +35,6 @@ export default class PointsDisplay extends React.Component {
         return self.setState({ accountPoints: result.c[0] })
       });
     }
-  //
-  //   makersToken.deployed().then(function(instance) {
-  //     makersTokenInstance = instance;
-  //     debugger;
-  //     var transferEventAll = makersTokenInstance.Transfer({_sender: '0x6630A2Af9f49c14C6beDeac703eb56316bd0e950'}, {fromBlock: 0, toBlock: 'latest'});
-  //     transferEventAll.watch(function(err, result) {
-  //       if (err) {
-  //         console.log(err);
-  //         return;
-  //       }
-  //       console.log(result.args);
-  //     });
-  //   }
-  // )};
 
 
   render() {
@@ -57,7 +42,6 @@ export default class PointsDisplay extends React.Component {
     return (
       <div>
         <h1>You have {this.state.accountPoints} MakerPoints!</h1>
-        <h1>You have {this.state.transactionHistory} MakerPoints!</h1>
       </div>
     );
   }
