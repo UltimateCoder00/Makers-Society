@@ -12,8 +12,8 @@ export default class Button extends React.Component {
   render() {
 
     return (
-      <fieldset>
-         <button
+      <fieldset className='form-button-field'>
+         <button className='form-button'
           type = {this.props.type || 'button'}
           value = {this.props.value || null}
          >

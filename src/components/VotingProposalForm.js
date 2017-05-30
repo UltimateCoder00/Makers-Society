@@ -56,7 +56,7 @@ export default class VotingProposalForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='input-form' onSubmit={this.handleSubmit}>
 
         <Input
          hasLabel='true'

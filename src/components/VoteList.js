@@ -152,32 +152,21 @@ export default class VoteList extends React.Component {
 
 
 
-
-
-
   render() {
     this.loadNumberOfProposals();
     this.PopulateVoteArray();
     return (
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                Proposal ID
-                {this.voteIdList()}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Proposal Name
-                {this.voteNameList()}
-              </td>
-            </tr>
-          </tbody>
+      <div className="main-block">
+        <table className="proposal-list">
+          <td>
+            {this.voteIdList()}
+          </td>
+          <td>
+            {this.voteNameList()}
+          </td>
         </table>
-        <h1>You {this.state.ProposalArray} MakerPoints!</h1>
-        <h1>You {this.state.ProposalArrayNames} MakerPoints!</h1>
+        <h1>There are currently {this.state.ProposalArray.length} proposals!</h1>
+        <h1>Most recent proposal: {this.state.ProposalArrayNames[this.state.ProposalArray.length -1]}</h1>
       </div>
     );
   }
