@@ -156,7 +156,7 @@ export default class VoteList extends React.Component {
     this.loadNumberOfProposals();
     this.PopulateVoteArray();
     return (
-      <div>
+      <div className="proposal-list">
         <table>
           <td>
             Proposal ID

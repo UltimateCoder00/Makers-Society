@@ -19,7 +19,7 @@ export default class Input extends React.Component {
      label={this.props.label}
     />
     <br/>
-     <input
+     <input className='input-field'
       onChange={this.props.onChange || null}
       id={this.props.htmlFor}
       max={this.props.max || null}
