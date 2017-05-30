@@ -161,14 +161,20 @@ export default class VoteList extends React.Component {
     return (
       <div>
         <table>
-          <td>
-            Proposal ID
-            {this.voteIdList()}
-          </td>
-          <td>
-            Proposal Name
-            {this.voteNameList()}
-          </td>
+          <tbody>
+            <tr>
+              <td>
+                Proposal ID
+                {this.voteIdList()}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Proposal Name
+                {this.voteNameList()}
+              </td>
+            </tr>
+          </tbody>
         </table>
         <h1>You {this.state.ProposalArray} MakerPoints!</h1>
         <h1>You {this.state.ProposalArrayNames} MakerPoints!</h1>
