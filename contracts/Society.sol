@@ -8,12 +8,15 @@ contract Society is owned {
   Member[] public members;
 
   event MembershipChanged(address member, bool isMember);
+  event AgreedToManifesto(address member, bool agrees);
 
   struct Member {
       address member;
       string name;
       uint memberSince;
   }
+
+  mapping (address => bool) public agreesToManifesto;
 
   /*make member*/
   function addMember(address targetMember, string memberName) onlyOwner {
@@ -40,6 +43,22 @@ contract Society is owned {
       members.length--;
 
     MembershipChanged(targetMember, false);
+  }
+
+  function agreesToManifesto(address targetMember) returns (bool) {
+
+    agreesToManifesto[targetMember] = true;
+
+
+    AgreedToManifesto(targetMember, agreesToManifesto[targetMember]);
+
+    return agreesToManifesto[targetMember];
+
+  }
+
+  function getManifestoStatus(address targetMember) returns (bool) {
+
+    return agreesToManifesto[targetMember];
   }
 
   /* modifier that allows only shareholders to vote and create new proposals */

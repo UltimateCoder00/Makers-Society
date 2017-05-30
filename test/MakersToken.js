@@ -40,7 +40,7 @@ contract("MakersToken", function(accounts) {
     });
   });
 });
-contract("MakersToken(State Reset)", function(accounts) {
+contract("MakersToken", function(accounts) {
   it ("should mint coins into an account", function() {
     var makersToken;
     var contract_owner = accounts[0];
