@@ -3,6 +3,7 @@ import MakersTokenContract from '../../build/contracts/MakersToken.json'
 import Web3 from 'web3'
 import Points from './pages/Points';
 import Voting from './pages/Voting';
+import Manifesto from './pages/Manifesto';
 
 import { Switch, Route } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ export default class Main extends React.Component {
             <Route exact path='/' component={Points}/>
             <Route path='/Voting' component={Voting}/>
             <Route path='/Points' component={Points}/>
+            <Route path='/Manifesto' component={Manifesto}/>
           </Switch>
       </main>
     );
