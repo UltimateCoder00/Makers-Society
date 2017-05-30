@@ -24,8 +24,8 @@ contract Congress is Society {
     Proposal[] public proposals;
     uint public numProposals;
     event ProposalAdded(uint proposalID, string description);
-    /*event Voted(uint proposalID, bool position, address voter, string justification);
-    event ProposalTallied(uint proposalID, int result, uint quorum, bool active);*/
+    event Voted(uint proposalID, bool position, address voter, string justification);
+    event ProposalTallied(uint proposalID, int result, uint quorum, bool active);
     event ChangeOfRules(uint minimumQuorum, uint debatingPeriodInMinutes, int majorityMargin);
     struct Proposal {
         address recipient;
@@ -37,14 +37,14 @@ contract Congress is Society {
         uint numberOfVotes;
         int currentResult;
         bytes32 proposalHash;
-        /*Vote[] votes;
-        mapping (address => bool) voted;*/
+        Vote[] votes;
+        mapping (address => bool) voted;
     }
-    /*struct Vote {
+    struct Vote {
         bool inSupport;
         address voter;
         string justification;
-    }*/
+    }
     /* First time setup */
     function Congress(
         uint minimumQuorumForProposals,
@@ -95,20 +95,12 @@ contract Congress is Society {
       return currentProposal.description;
     }
 
-    /* function to check if a proposal code matches */
-    /*function checkProposalCode(
-        uint proposalNumber,
-        address beneficiary,
-        uint etherAmount,
-        bytes transactionBytecode
-    )
-        constant
-        returns (bool codeChecksOut)
-    {
-        Proposal p = proposals[proposalNumber];
-        return p.proposalHash == sha3(beneficiary, etherAmount, transactionBytecode);
-    }*/
-    /*function vote(
+    function getProposalVotes(uint proposalNumber) returns (uint totalVotes, int supportingVotes) {
+      Proposal currentProposal = proposals[proposalNumber];
+      return (currentProposal.numberOfVotes, currentProposal.currentResult);
+    }
+
+    function vote(
         uint proposalNumber,
         bool supportsProposal,
         string justificationText
@@ -128,12 +120,11 @@ contract Congress is Society {
         // Create a log of this event
         Voted(proposalNumber,  supportsProposal, msg.sender, justificationText);
         return p.numberOfVotes;
-    }*/
-    /*function executeProposal(uint proposalNumber, bytes transactionBytecode) {
+    }
+    function executeProposal(uint proposalNumber) {
         Proposal p = proposals[proposalNumber];
         if (now < p.votingDeadline
             || p.executed
-            || p.proposalHash != sha3(p.recipient, p.amount, transactionBytecode)
             || p.numberOfVotes < minimumQuorum)
             throw;
         if (p.currentResult > majorityMargin) {
@@ -143,5 +134,5 @@ contract Congress is Society {
             p.proposalPassed = false;
         }
         ProposalTallied(proposalNumber, p.currentResult, p.numberOfVotes, p.proposalPassed);
-    }*/
+    }
 }
