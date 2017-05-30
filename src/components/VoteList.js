@@ -46,6 +46,7 @@ export default class VoteList extends React.Component {
     for (var i = 0; i < self.state.NumberOfProposals; i++) {
       self.state.ProposalArray[i] = i + 1 ;
       this.getProposalName(i);
+      this.getProposalVotes(i);
     }
   }
 
@@ -160,13 +161,19 @@ export default class VoteList extends React.Component {
     return (
       <div className="main-block">
         <table className="proposal-list">
+          <tr>
+           <th id="id-number">Id Number</th>
+           <th id="vote">Vote</th>
+           <th id="total-votes">Total Votes</th>
+           <th id="votes-for">Votes For</th>
+          </tr>
           <td>
             {this.voteIdList()}
           </td>
           <td>
             {this.voteNameList()}
           </td>
-          <td>
+          <td >
             {this.TotalVotesList()}
           </td>
           <td>
