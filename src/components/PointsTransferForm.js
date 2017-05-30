@@ -66,7 +66,7 @@ export default class PointsTransferForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='input-form' onSubmit={this.handleSubmit}>
         <Input
          hasLabel='true'
          name="accountNumber"

@@ -1,12 +1,17 @@
 /* PAGE */
 
+
 body,
 .pure-g [class*=pure-u] {
   font-family: 'Open Sans', sans-serif;
 }
 
-h1, h2, h3 {
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+h1, h2, h3, p {
+  font-family: 'futura-pt', Futura, 'Arial Narrow', sans-serif;
+}
+
+tr, td {
+  font-family: 'futura-pt', Futura, 'Arial Narrow', sans-serif;
 }
 
 code {
@@ -14,6 +19,46 @@ code {
   margin: 20px 0 15px 0;
   padding: 10px;
   background: #eee;
+}
+
+input {
+  width: 39.25rem;
+  border-radius: 10px;
+  height: 40px;
+  border-width: 2px solid #A9A9A9;
+}
+
+.input-form {
+  max-width: 39.25rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'futura-pt', Futura, 'Arial Narrow', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 13.50338px;
+  text-align: left;
+  font-weight: 400;
+}
+
+
+.input-row {
+  text-align: left;
+  border: none;
+}
+
+.form-button-field {
+  border: none;
+  text-align: center;
+}
+
+.form-button {
+  height: 40px;
+  border: 2px solid #aa1925;
+  border-radius: 10px;
+  color: #aa1925;
+  background: #ffffff
 }
 
 .container {
@@ -39,7 +84,7 @@ code {
 .navbar {
   position: fixed;
   padding: 5px;
-  background: #0c1a2b;
+  background: #AA1925;
   font-family: 'Oswald', 'Arial Narrow', sans-serif;
 }
 
