@@ -1,7 +1,7 @@
 var MakersToken = artifacts.require("./MakersToken.sol");
 
 contract("MakersToken", function(accounts) {
-  it ("should take 10 MKT out the the owners accounts", function() {
+  it ("Should take 10 MKT out the the owners accounts", function() {
     var makersToken;
     var contract_owner = accounts[0];
     var account_two = accounts[1];
@@ -18,8 +18,8 @@ contract("MakersToken", function(accounts) {
       assert.equal(account_one_ending_balance, 90, "Correct balance after transfer is complete");
     });
   });
-  // transferOwnership is indirectly tested
-  it ("should transfer Ownership to account_two and allow account_two to mint coins", function() {
+
+  it ("Should transfer Ownership to account_two and allow account_two to mint coins", function() {
     var makersToken;
     var contract_owner = accounts[0];
     var account_two = accounts[1];
@@ -41,7 +41,7 @@ contract("MakersToken", function(accounts) {
   });
 });
 contract("MakersToken", function(accounts) {
-  it ("should mint coins into an account", function() {
+  it ("Should mint coins into an account", function() {
     var makersToken;
     var contract_owner = accounts[0];
     var account_two = accounts[1];

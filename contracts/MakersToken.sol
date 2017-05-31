@@ -12,7 +12,7 @@ contract MakersToken is owned {
   mapping (address => uint256) public BalanceOf;
   mapping (address => bool) public frozenAccount;
 
-  event Transfer(address indexed from, address indexed to, uint256 value);
+  event LogTransfer(address indexed from, address indexed to, uint256 value);
   event FrozenFunds(address target, bool frozen);
 
   function MakersToken(uint256 initialSupply, string tokenName, uint8 decimalUnits, string tokenSymbol, address centralMinter) {
@@ -33,7 +33,7 @@ contract MakersToken is owned {
 
     BalanceOf[msg.sender] -= _value;
     BalanceOf[_to] += _value;
-    Transfer(msg.sender, _to, _value);
+    LogTransfer(msg.sender, _to, _value);
   }
 
   function getBalance() returns (uint) {
@@ -43,8 +43,8 @@ contract MakersToken is owned {
   function mintToken(address target, uint256 mintedAmount) onlyOwner {
     BalanceOf[target] += mintedAmount;
     totalSupply += mintedAmount;
-    Transfer(0, owner, mintedAmount);
-    Transfer(owner, target, mintedAmount);
+    LogTransfer(0, owner, mintedAmount);
+    LogTransfer(owner, target, mintedAmount);
   }
 
   function freezeAccount(address target, bool freeze) onlyOwner {
