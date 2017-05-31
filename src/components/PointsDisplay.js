@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MakersTokenContract from '../../build/contracts/MakersToken.json'
 import Web3 from 'web3'
 
@@ -23,8 +23,6 @@ export default class PointsDisplay extends React.Component {
     const contract = require('truffle-contract')
     const makersToken = contract(MakersTokenContract)
     makersToken.setProvider(provider)
-
-    const web3RPC = new Web3(provider)
 
     var makersTokenInstance
 

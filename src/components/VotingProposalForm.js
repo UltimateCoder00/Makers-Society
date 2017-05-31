@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CongressContract from '../../build/contracts/Congress.json'
 import Web3 from 'web3'
 import Button from './Button'

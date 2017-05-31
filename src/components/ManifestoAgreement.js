@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Web3 from 'web3'
 import SocietyContract from '../../build/contracts/Society.json'
 import Button from './Button'
@@ -30,11 +30,7 @@ export default class ManifestoAgreement extends React.Component {
     const society = contract(SocietyContract)
     society.setProvider(provider)
 
-    const web3RPC = new Web3(provider)
-
     var societyInstance;
-
-    var currentUserAddress = web3RPC.eth.accounts[0];
 
     society.deployed().then(function(instance) {
       societyInstance = instance;
@@ -43,7 +39,7 @@ export default class ManifestoAgreement extends React.Component {
     });
 
   }
-  
+
   render() {
 
     return (

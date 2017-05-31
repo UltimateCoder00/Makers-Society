@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import Web3 from 'web3'
+import React from 'react'
 import ManifestoText from '../ManifestoText';
 import ManifestoAgreement from '../ManifestoAgreement';
 

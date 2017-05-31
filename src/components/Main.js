@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import MakersTokenContract from '../../build/contracts/MakersToken.json'
-import Web3 from 'web3'
+import React from 'react'
 import Points from './pages/Points';
 import Voting from './pages/Voting';
 import Manifesto from './pages/Manifesto';
