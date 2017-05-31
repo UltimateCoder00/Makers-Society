@@ -14,6 +14,9 @@ export default class Points extends React.Component {
     return (
         <div className="pure-g">
           <div className="pure-u-1-1">
+          <div className="image-header">
+            <img src="/IMG_1538.JPG" />
+          </div>
             <div className="main-block">
             <PointsDisplay />
             <PointsTransferForm />

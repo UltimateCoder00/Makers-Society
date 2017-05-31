@@ -30,6 +30,25 @@ code {
   background: #eee;
 }
 
+.navbar-image {
+  text-align: right;
+}
+
+.navbar-table {
+  width: 100%;
+}
+
+.image-header {
+  width: 100%;
+  height: 300px;
+}
+
+.image-header img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 .input-field {
   width: 39.25rem;
   border-radius: 10px;
@@ -47,7 +66,7 @@ code {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 13.50338px;
-  text-align: left;
+  text-align: center;
   font-weight: 400;
 }
 
@@ -63,6 +82,7 @@ code {
 }
 
 .form-button {
+  min-width: 80px;
   height: 40px;
   border: 2px solid #aa1925;
   border-radius: 10px;
@@ -105,7 +125,9 @@ code {
   position: fixed;
   padding: 5px;
   background: #AA1925;
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-family: 'futura-pt', Futura, 'Arial Narrow', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .navbar a {

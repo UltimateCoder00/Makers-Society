@@ -85,7 +85,6 @@ export default class SubmitVoteForm extends React.Component {
           value={this.state.value}
           onSubmit={this.handleDecisionChange}
         />
-
         <Button
           type='submit'
           value='submit'

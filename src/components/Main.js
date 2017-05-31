@@ -18,7 +18,7 @@ export default class Main extends React.Component {
     return (
       <main className="container">
           <Switch>
-            <Route exact path='/' component={Points}/>
+            <Route exact path='/' component={Manifesto}/>
             <Route path='/Voting' component={Voting}/>
             <Route path='/Points' component={Points}/>
             <Route path='/Manifesto' component={Manifesto}/>

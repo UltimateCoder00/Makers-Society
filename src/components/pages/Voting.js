@@ -17,14 +17,17 @@ export default class Voting extends React.Component {
     return (
         <div className="pure-g">
           <div className="pure-u-1-1">
+            <div className="image-header">
+              <img src="/IMG_1721.JPG" />
+            </div>
             <div className="main-block">
             <br/>
 
             <VotingProposalForm />
             <h1>Proposals:</h1>
             <VoteList />
-            </div>
             <SubmitVoteForm />
+            </div>
           </div>
         </div>
     );

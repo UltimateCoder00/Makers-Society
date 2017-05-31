@@ -43,11 +43,10 @@ export default class ManifestoAgreement extends React.Component {
     });
 
   }
-  
+
   render() {
 
     return (
-      <div>
         <div>
           <form className="input-form" onSubmit={this.handleSubmit}>
             <Link to='/Points'><Button
@@ -57,11 +56,6 @@ export default class ManifestoAgreement extends React.Component {
             /></Link>
           </form>
         </div>
-
-        <div>
-          <p> {this.state.agrees.toString()} </p>
-        </div>
-      </div>
 
     )
   }
