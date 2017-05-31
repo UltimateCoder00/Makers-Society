@@ -155,7 +155,6 @@ export default class VoteList extends React.Component {
 
 
   render() {
-    this.getProposalVotes(0);
     this.loadNumberOfProposals();
     this.PopulateVoteArray();
     return (

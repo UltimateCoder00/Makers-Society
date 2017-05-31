@@ -13,7 +13,7 @@ export default class TrueFalseSelect extends React.Component {
 
   render() {
     return (
-          <select>
+          <select className='form-button'>
             <option value="true">For</option>
             <option value="false">Against</option>
           </select>

@@ -2,8 +2,9 @@ pragma solidity ^0.4.8;
 
 import "./Society.sol";
 
+/*Congress allows members to make and vote on proposals*/
 contract Congress is Society {
-    /* Contract Variables and events */
+
     uint public minimumQuorum;
     uint public debatingPeriodInMinutes;
     int public majorityMargin;
@@ -26,12 +27,13 @@ contract Congress is Society {
         Vote[] votes;
         mapping (address => bool) voted;
     }
+
     struct Vote {
         bool inSupport;
         address voter;
         string justification;
     }
-    /* First time setup */
+
     function Congress(
         uint minimumQuorumForProposals,
         uint minutesForDebate,
@@ -39,12 +41,10 @@ contract Congress is Society {
     ) payable {
         changeVotingRules(minimumQuorumForProposals, minutesForDebate, marginOfVotesForMajority);
         if (congressLeader != 0) owner = congressLeader;
-        // It’s necessary to add an empty first member
         addMember(0, '');
-        // and let's add the founder, to save a step later
         addMember(owner, 'founder');
     }
-    /*change rules*/
+
     function changeVotingRules(
         uint minimumQuorumForProposals,
         uint minutesForDebate,
@@ -55,7 +55,7 @@ contract Congress is Society {
         majorityMargin = marginOfVotesForMajority;
         ChangeOfRules(minimumQuorum, debatingPeriodInMinutes, majorityMargin);
     }
-    /* Function to create a new proposal */
+
     function newProposal(string JobDescription)  onlyMembers  returns (uint proposalID) {
         proposalID = proposals.length++;
         Proposal p = proposals[proposalID];
@@ -91,31 +91,31 @@ contract Congress is Society {
         onlyMembers
         returns (uint voteID)
     {
-        Proposal p = proposals[proposalNumber];         // Get the proposal
-        if (p.voted[msg.sender] == true) throw;         // If has already voted, cancel
-        p.voted[msg.sender] = true;                     // Set this voter as having voted
-        p.numberOfVotes++;                              // Increase the number of votes
-        if (supportsProposal) {                         // If they support the proposal
-            p.currentResult++;                          // Increase score
-        } else {                                        // If they don't
-            p.currentResult--;                          // Decrease the score
-        }
-        // Create a log of this event
-        Voted(proposalNumber,  supportsProposal, msg.sender, justificationText);
-        return p.numberOfVotes;
-    }
-    function executeProposal(uint proposalNumber) {
-        Proposal p = proposals[proposalNumber];
-        if (now < p.votingDeadline
-            || p.executed
-            || p.numberOfVotes < minimumQuorum)
-            throw;
-        if (p.currentResult > majorityMargin) {
-            p.executed = true;
-            p.proposalPassed = true;
+        Proposal currentProposal = proposals[proposalNumber];
+        if (currentProposal.voted[msg.sender] == true) throw;
+        currentProposal.voted[msg.sender] = true;
+        currentProposal.numberOfVotes++;
+        if (supportsProposal) {
+            currentProposal.currentResult++;
         } else {
-            p.proposalPassed = false;
+            currentProposal.currentResult--;
         }
-        ProposalTallied(proposalNumber, p.currentResult, p.numberOfVotes, p.proposalPassed);
+        Voted(proposalNumber,  supportsProposal, msg.sender, justificationText);
+        return currentProposal.numberOfVotes;
+    }
+
+    function executeProposal(uint proposalNumber) {
+        Proposal currentProposal = proposals[proposalNumber];
+        if (now < currentProposal.votingDeadline
+            || currentProposal.executed
+            || currentProposal.numberOfVotes < minimumQuorum)
+            throw;
+        if (currentProposal.currentResult > majorityMargin) {
+            currentProposal.executed = true;
+            currentProposal.proposalPassed = true;
+        } else {
+            currentProposal.proposalPassed = false;
+        }
+        ProposalTallied(proposalNumber, currentProposal.currentResult, currentProposal.numberOfVotes, currentProposal.proposalPassed);
     }
 }

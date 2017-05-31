@@ -89,7 +89,7 @@ export default class SubmitVoteForm extends React.Component {
         <Button
           type='submit'
           value='submit'
-          text='Submit Proposal'
+          text='Vote'
         />
       </form>
     );
