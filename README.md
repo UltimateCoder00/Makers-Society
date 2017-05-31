@@ -22,7 +22,7 @@ A Decentralized Voting System & Native CryptoCurrency (MakerPoints) run on the E
 3. Install the chrome browser add-on MetaMask & set up an account, make sure your account is unlocked when interacting with the program. Save your MetaMask seed phrase, you'll need this later (If you lose it don't worry, it can be accessed through settings). 
 
 4. Set up Test Network to mock the Ethereum Blockchain. 
- ```javascript
+    ```javascript
     testrpc -m "(insert your MetaMask seed phrase here)"    
     ```
 
@@ -40,9 +40,9 @@ A Decentralized Voting System & Native CryptoCurrency (MakerPoints) run on the E
 ## Interacting with Society
     
     
-###
-Voting
-1. To send some MakerPoints(MKP) to an address enter the amount and a valid ethereum address for the reciepient (this is running through a Test Network so no real currency will be sent.)
+### Voting
+
+To send some MakerPoints(MKP) to an address enter the amount and a valid ethereum address for the reciepient (this is running through a Test Network so no real currency will be sent.)
 
 
 
