@@ -1,11 +1,12 @@
 var Congress = artifacts.require("./Congress.sol");
 
 contract("Congress", function(accounts) {
-  it("should be able to create a proposal", function(){
+  it("Should be able to create a proposal", function(){
     var congress;
     var account_one = accounts[0];
     var proposal;
     var check_out;
+
     return Congress.deployed().then(function(instance) {
       congress = instance;
       return congress.newProposal("dummyproposal", {from: account_one})
@@ -24,6 +25,7 @@ contract("Congress", function(accounts) {
     var account_one = accounts[0];
     var account_two = accounts[1];
     var loggedEvent;
+
     return Congress.deployed().then(function(instance) {
       congress = instance;
       return congress.addMember(account_two, "Steph")
@@ -40,6 +42,7 @@ contract("Congress", function(accounts) {
     var account_one = accounts[0];
     var account_two = accounts[1];
     var loggedEvent;
+
     return Congress.deployed().then(function(instance) {
       congress = instance;
       return congress.addMember(account_two, "Steph")
@@ -89,6 +92,7 @@ contract("Congress", function(accounts) {
     var position;
     var voter;
     var justification;
+
     return Congress.deployed().then(function(instance) {
       congress = instance;
       return congress.newProposal("dummyproposal", {from: account_one})
