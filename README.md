@@ -39,12 +39,23 @@ A Decentralized Voting System & Native CryptoCurrency (MakerPoints) run on the E
     
 ## Interacting with Society
     
+### Logging in    
+
+No Logins(well, kind of)! One of the great things about Blockchains is that users have one global login for all their services - their private key. For our App this is held in MetaMask. 
+
+However we do have one extra check that for users to complete before they can join the Makers Society - Read our Manifesto, upon submiting this will inform the blockchain you're on bored with the principles and now you're free to make Proposals, Vote & Particapate in the Makers Economy :)      
     
-### Voting
+### Making MakerPoint (MKP) Payments
 
 To send some MakerPoints(MKP) to an address enter the amount and a valid ethereum address for the reciepient (this is running through a Test Network so no real currency will be sent.)
 
+### Making Proposals
 
+Simply add your Proposal and click 'Submit Proposal', it's as easy as that! 
+
+### Voting
+
+Type the relevant ProposalId number into the box then select For or Against depending on your stance.
 
 ## FAQ
 
