@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Web3 from 'web3'
 import SocietyContract from '../../build/contracts/Society.json'
 import Button from './Button'
+import { Link } from 'react-router-dom'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
@@ -13,10 +14,15 @@ export default class ManifestoAgreement extends React.Component {
   constructor() {
     super();
     this.state = {
+      agrees: false
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
+
+
+    var self = this;
 
     const provider = new Web3.providers.HttpProvider('http://localhost:8545')
 
@@ -33,21 +39,30 @@ export default class ManifestoAgreement extends React.Component {
     society.deployed().then(function(instance) {
       societyInstance = instance;
       societyInstance.agreesToManifesto();
-    }).then(function() {
-      console.log(societyInstance.getManifestoStatus.call())
-    })
+      return self.setState({ agrees: true })
+    });
 
   }
-
+  
   render() {
+
     return (
-      <form className="input-form" onSubmit={this.handleSubmit}>
-        <Button
-          type='submit'
-          value='submit'
-          text='I Agree'
-        />
-      </form>
+      <div>
+        <div>
+          <form className="input-form" onSubmit={this.handleSubmit}>
+            <Link to='/Points'><Button
+              type='submit'
+              value='submit'
+              text='I Agree'
+            /></Link>
+          </form>
+        </div>
+
+        <div>
+          <p> {this.state.agrees.toString()} </p>
+        </div>
+      </div>
+
     )
   }
 
