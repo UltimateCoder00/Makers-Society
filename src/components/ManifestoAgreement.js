@@ -38,12 +38,12 @@ export default class ManifestoAgreement extends React.Component {
 
     society.deployed().then(function(instance) {
       societyInstance = instance;
-      societyInstance.agreesToManifesto();
+      societyInstance.agreesToManifesto({from: currentUserAddress});
       return self.setState({ agrees: true })
     });
 
   }
-  
+
   render() {
 
     return (
@@ -56,10 +56,6 @@ export default class ManifestoAgreement extends React.Component {
               text='I Agree'
             /></Link>
           </form>
-        </div>
-
-        <div>
-          <p> {this.state.agrees.toString()} </p>
         </div>
       </div>
 

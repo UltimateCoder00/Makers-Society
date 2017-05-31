@@ -43,12 +43,12 @@ export default class PointsTransferForm extends React.Component {
 
 
     const provider = new Web3.providers.HttpProvider('http://localhost:8545')
-
-    const contract = require('truffle-contract')
-    const makersToken = contract(MakersTokenContract)
-    makersToken.setProvider(provider)
-
     const web3RPC = new Web3(provider)
+    const contract = require('truffle-contract')
+
+    const makersToken = contract(MakersTokenContract)
+    makersToken.defaults({from: web3RPC.eth.accounts[0]})
+    makersToken.setProvider(provider)
 
     var makersTokenInstance
 
@@ -57,7 +57,7 @@ export default class PointsTransferForm extends React.Component {
 
       makersToken.deployed().then(function(instance) {
         makersTokenInstance = instance;
-        return makersTokenInstance.transfer(self.state.accountNumber,self.state.transferAmount);
+        return makersTokenInstance.transfer(self.state.accountNumber,self.state.transferAmount, {from: accounts[0]});
       }).then(function() {
         return console.log('yay');
       });
