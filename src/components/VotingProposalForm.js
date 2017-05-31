@@ -47,7 +47,7 @@ export default class VotingProposalForm extends React.Component {
 
       congress.deployed().then(function(instance) {
         congressInstance = instance;
-        return congressInstance.newProposal(self.state.jobDescription);
+        return congressInstance.newProposal(self.state.jobDescription ({gas: 80000}));
       }).then(function() {
         return console.log('done');
       });
