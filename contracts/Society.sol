@@ -5,15 +5,18 @@ import "./Owned.sol";
 contract Society is owned {
 
   mapping (address => uint) public memberId;
+  mapping (address => bool) public AgreesToManifesto;
   Member[] public members;
 
   event MembershipChanged(address member, bool isMember);
+  event AgreedToManifesto(address member, bool agrees);
 
   struct Member {
       address member;
       string name;
       uint memberSince;
   }
+
 
   /*make member*/
   function addMember(address targetMember, string memberName) onlyOwner {
@@ -40,6 +43,20 @@ contract Society is owned {
       members.length--;
 
     MembershipChanged(targetMember, false);
+  }
+
+  function agreesToManifesto() {
+
+    AgreesToManifesto[msg.sender] = true;
+
+
+    AgreedToManifesto(msg.sender, AgreesToManifesto[msg.sender]);
+
+  }
+
+  function getManifestoStatus() returns (bool) {
+
+    return AgreesToManifesto[msg.sender];
   }
 
   /* modifier that allows only shareholders to vote and create new proposals */
