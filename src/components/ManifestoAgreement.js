@@ -32,11 +32,10 @@ export default class ManifestoAgreement extends React.Component {
 
     society.deployed().then(function(instance) {
       societyInstance = instance;
-      societyInstance.agreesToManifesto(currentUserAddress);
-      console.log("Member agrees!");
-      var agrees = societyInstance.getManifestoStatus.call(currentUserAddress);
-      console.log(agrees);
-    });
+      societyInstance.agreesToManifesto();
+    }).then(function() {
+      console.log(societyInstance.getManifestoStatus.call())
+    })
 
   }
 
