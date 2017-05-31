@@ -1,8 +1,4 @@
-import React, { Component } from 'react'
-import CongressContract from '../../build/contracts/Congress.json'
-import Web3 from 'web3'
-import Button from './Button'
-import Input from './Input'
+import React from 'react'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'

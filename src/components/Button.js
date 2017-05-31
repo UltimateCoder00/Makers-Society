@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import MakersTokenContract from '../../build/contracts/MakersToken.json'
-import Web3 from 'web3'
+import React from 'react'
 
 import '../css/oswald.css'
 import '../css/open-sans.css'
@@ -14,8 +12,8 @@ export default class Button extends React.Component {
     return (
       <fieldset className='form-button-field'>
          <button className='form-button'
-          type = {this.props.type || 'button'}
-          value = {this.props.value || null}
+          type={this.props.type || 'button'}
+          value={this.props.value || null}
          >
          {this.props.text}
          </button>

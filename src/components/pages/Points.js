@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import MakersTokenContract from '../../../build/contracts/MakersToken.json'
-import Web3 from 'web3'
+import React from 'react'
 import PointsDisplay from '../PointsDisplay';
 import PointsTransferForm from '../PointsTransferForm';
 

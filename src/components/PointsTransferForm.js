@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MakersTokenContract from '../../build/contracts/MakersToken.json'
 import Web3 from 'web3'
 import Button from './Button'
