@@ -17,6 +17,7 @@ contract MakersToken is owned {
 
   function MakersToken(uint256 initialSupply, string tokenName, uint8 decimalUnits, string tokenSymbol, address centralMinter) {
     if( centralMinter != 0 ) owner = centralMinter;
+
     totalSupply = initialSupply;
     BalanceOf[msg.sender] = initialSupply;
     name = tokenName;
@@ -26,6 +27,7 @@ contract MakersToken is owned {
 
   function transfer(address _to, uint256 _value) {
     if (frozenAccount[msg.sender]) throw;
+
     if (BalanceOf[msg.sender] < _value || BalanceOf[_to] + _value < BalanceOf[_to])
       throw;
 
