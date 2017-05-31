@@ -14,6 +14,7 @@ contract Congress is Society {
     event Voted(uint proposalID, bool position, address voter, string justification);
     event ProposalTallied(uint proposalID, int result, uint quorum, bool active);
     event ChangeOfRules(uint minimumQuorum, uint debatingPeriodInMinutes, int majorityMargin);
+
     struct Proposal {
         address recipient;
         uint amount;
@@ -37,7 +38,8 @@ contract Congress is Society {
     function Congress(
         uint minimumQuorumForProposals,
         uint minutesForDebate,
-        int marginOfVotesForMajority, address congressLeader
+        int marginOfVotesForMajority,
+        address congressLeader
     ) payable {
         changeVotingRules(minimumQuorumForProposals, minutesForDebate, marginOfVotesForMajority);
         if (congressLeader != 0) owner = congressLeader;
@@ -58,12 +60,12 @@ contract Congress is Society {
 
     function newProposal(string JobDescription)  onlyMembers  returns (uint proposalID) {
         proposalID = proposals.length++;
-        Proposal p = proposals[proposalID];
-        p.description = JobDescription;
-        p.votingDeadline = now + debatingPeriodInMinutes * 1 minutes;
-        p.executed = false;
-        p.proposalPassed = false;
-        p.numberOfVotes = 0;
+        Proposal currentProposal = proposals[proposalID];
+        currentProposal.description = JobDescription;
+        currentProposal.votingDeadline = now + debatingPeriodInMinutes * 1 minutes;
+        currentProposal.executed = false;
+        currentProposal.proposalPassed = false;
+        currentProposal.numberOfVotes = 0;
         ProposalAdded(proposalID, JobDescription);
         numProposals = proposalID+1;
         return proposalID;
