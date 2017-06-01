@@ -81,7 +81,6 @@ export default class VoteList extends React.Component {
       congressInstance = instance;
       return congressInstance.getProposalVotes.call(proposalId);
     }).then(function(result) {
-      debugger;
       self.state.ProposalArrayTotalVotes[proposalId] = result[0].c;
       self.state.ProposalArrayVotesFor[proposalId] = result[1].c;
       return self.state.ProposalsArrayVotesFor;
