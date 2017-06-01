@@ -59,3 +59,13 @@ Type the relevant ProposalId number into the box then select For or Against depe
 
 ## FAQ
 
+### What's a Blockchain?
+
+A Blockchain is a distributed database where transactions are recorded and stored accross 1000s of computers (nodes). Bitcoin is an example of a public blockchain that's focus is on financial transactions.  
+
+### Why did you choose Ethereum?
+
+Ethereum allows developers to deploy turing complete & object oriented languages to the blockchain - this gave us lots of flexibility when desiging our currency and voting system. Examples of what other people are building include peer-to-peer energy trading networks, supply-chain integrity and management tools and distributed prediction markets.
+
+
+
