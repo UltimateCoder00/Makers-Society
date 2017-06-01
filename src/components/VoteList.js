@@ -159,6 +159,7 @@ export default class VoteList extends React.Component {
            <th id="vote">Proposal</th>
            <th id="total-votes">Total Votes</th>
            <th id="votes-for">Votes For</th>
+           <th></th>
           </tr>
           <td>
             {this.voteIdList()}
@@ -172,6 +173,7 @@ export default class VoteList extends React.Component {
           <td>
             {this.ForVotesList()}
           </td>
+          <td></td>
         </table>
         <br/>
         <h1>There are currently {this.state.ProposalArray.length} proposals!</h1>
