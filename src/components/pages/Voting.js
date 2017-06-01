@@ -16,7 +16,7 @@ export default class Voting extends React.Component {
         <div className="pure-g">
           <div className="pure-u-1-1">
             <div className="image-header">
-              <img src="/IMG_1721.JPG" />
+              <img src="/object-congresscrop.jpg" />
             </div>
             <div className="main-block">
             <br/>
