@@ -13,7 +13,7 @@ export default class Points extends React.Component {
         <div className="pure-g">
           <div className="pure-u-1-1">
           <div className="image-header">
-            <img src="/IMG_1538.JPG" />
+            <img src="/object-windmill.jpg" />
           </div>
             <div className="main-block">
             <PointsDisplay />
