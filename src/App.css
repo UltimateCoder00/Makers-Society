@@ -14,7 +14,6 @@ h1, h2, h3, p {
 tr, td {
   font-family: 'futura-pt', Futura, 'Arial Narrow', sans-serif;
   padding-left: 100px;
-  text-align: right;
 }
 
 ul {
@@ -101,6 +100,7 @@ code {
 .proposal-list {
   align: center;
   margin: auto;
+  text-align: right;
 }
 
 .container {
