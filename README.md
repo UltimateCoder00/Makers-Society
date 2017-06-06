@@ -1,4 +1,4 @@
-[!Makers Society Logo](/public/mslogo.png)
+![Makers Society Logo](/public/mslogo.png)
 
 # Makers Society
 
@@ -62,7 +62,7 @@ Simply add your Proposal and click 'Submit Proposal' - it's as easy as that!
 
 ### Voting
 
-Type the relevant ProposalId number into the box then select For or Against, depending on your stance.
+Type the relevant ProposalId number into the box, then select *For* or *Against*, depending on your stance.
 
 ## Acknowledgements
 
@@ -88,9 +88,9 @@ Here are some links and resources we found handy when getting our head around bl
   - [Interview with Don Tapscott, great summary of Blockchain Revolution](http://www.mckinsey.com/industries/high-tech/our-insights/how-blockchains-could-change-the-world)
   - [Ethereum White Paper](https://github.com/ethereum/wiki/wiki/White-Paper)
   - [BlockGeeks: What is Ethereum?](https://blockgeeks.com/guides/what-is-ethereum/)
-  - [Quora Answers to 'What is Ethereum in layman's terms?''](https://www.quora.com/What-is-Ethereum-in-laymans-term)
+  - [Quora Answers to 'What is Ethereum in layman's terms?'](https://www.quora.com/What-is-Ethereum-in-laymans-term)
   - [Smart Contracts for Noobs](https://medium.com/@ConsenSys/a-101-noob-intro-to-programming-smart-contracts-on-ethereum-695d15c1dab4)
-  
+
 
 ### Documentation
 
